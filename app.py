@@ -70,6 +70,15 @@ def editar(id):
     #recuperamos el objeto persona a editar
     persona = Persona.query.get_or_404(id)
     personaForma = PersonaForm(obj=persona)
+
+    #Validar si es de tipo post la peticion y si es valida para poder guardar
+    if request.method == 'POST':
+        if personaForma.validate_on_submit():
+            personaForma.populate_obj(persona)
+            app.logger.debug(f'persona a modificar: {persona}')
+            db.session.commit()
+            return redirect(url_for('inicio'))
+            #
     return render_template('editar.html', forma = personaForma)
 
 
