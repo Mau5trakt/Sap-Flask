@@ -57,6 +57,9 @@ def agregar():
             app.logger.debug(f'Persona a agregar: {persona}')
 
         #insertamos el nuevo registro
+        db.session.add(persona)
+        db.session.commit() #es, raro es tipo git
+
 
     return render_template('agregar.html', forma = personaForm)
 
