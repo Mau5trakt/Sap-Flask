@@ -76,7 +76,7 @@ def editar(id):
         if personaForma.validate_on_submit():
             personaForma.populate_obj(persona)
             app.logger.debug(f'persona a modificar: {persona}')
-            db.session.commit()
+            db.session.commit() #Si ya se ha abierto la db con anterioridad solo se usa commit para modificar algo en ella
             return redirect(url_for('inicio'))
             #
     return render_template('editar.html', forma = personaForma)
