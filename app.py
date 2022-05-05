@@ -32,7 +32,8 @@ app.config['SECRET_KEY']='llave_secreta' #tiene que ser realmente secreta
 @app.route('/index.html')
 def inicio():  # put application's code here
     #listado de personas
-    personas = Persona.query.all()
+    #personas = Persona.query.all()
+    personas = Persona.query.order_by('id')
     total_personas = Persona.query.count()
     app.logger.debug(f'Listado de personas: {personas} ')
     app.logger.debug(f'Total  de personas: {total_personas} ')
