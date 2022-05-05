@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 from flask_migrate import Migrate
 from database import db
 from forms import PersonaForm
@@ -60,6 +60,7 @@ def agregar():
         db.session.add(persona)
         db.session.commit() #es, raro es tipo git
 
+        return redirect(url_for('inicio'))
 
     return render_template('agregar.html', forma = personaForm)
 
