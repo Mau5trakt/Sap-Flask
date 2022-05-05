@@ -65,6 +65,12 @@ def agregar():
     return render_template('agregar.html', forma = personaForm)
 
 
+@app.route('/editar/<int:id>', methods=['GET', 'POST'])
+def editar(id):
+    #recuperamos el objeto persona a editar
+    persona = Persona.query.get_or_404(id)
+    personaForma = PersonaForm(obj=persona)
+    return render_template('editar.html', forma = personaForma)
 
 
 if __name__ == '__main__':
