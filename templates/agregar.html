@@ -8,11 +8,12 @@
 <body>
 <nav class="navbar navbar-expand-dark navbar-dark bg-dark">
     <a class="navbar-brand text-center" href="#"> SAP</a>
+    <a class="navbar-brand text-center" href="{{url_for('inicio')  }}">Volver </a>
   </nav>
 
 <h1>Agregar Persona</h1>
 <form method="POST">
- {{ forma._csrf_token }}
+ {{ forma.csrf_token }}
     <p>
         {{ forma.nombre.label }} <br/>
         {{ forma.nombre(class_="sera-que-si-entra?", size=30 )  }} <!-- Asi es como se mete la clase y otro elemento (el size) -->
