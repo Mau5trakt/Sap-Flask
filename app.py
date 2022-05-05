@@ -82,5 +82,15 @@ def editar(id):
     return render_template('editar.html', forma = personaForma)
 
 
+@app.route('/eliminar/<int:id>')
+def eliminar(id):
+    persona = Persona.query.get_or_404(id)
+    app.logger.debug(f'Persona a eliminar: {persona}')
+    db.session.delete(persona)
+    db.session.commit()
+    return  redirect(url_for('inicio'))
+
+
+
 if __name__ == '__main__':
     app.run()
